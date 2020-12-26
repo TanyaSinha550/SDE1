@@ -1,1 +1,47 @@
+Approach for - Duplicates in an array of size N+1 having elements in between 1 to N.
+
+Note -
+Assuming there is only one duplicate number ( But have multiple occurrence of same)
+Run time complexity should be less than O(N2)
+Must use only constant ,O(1) extra space.
+Must not modfiy the array ( read only array)
+
+https://leetcode.com/problems/find-the-duplicate-number/solution/
+
+https://www.youtube.com/watch?v=32Ll35mhWg0&list=PLgUwDviBIf0rPG3Ictpu74YWBQ1CaBkm2&index=1
+
+
+Approach 1 - 
+Sort the array using merge sort 
+Then lineraly tranverse the array and find where a[i] is equal to a[i+1].
+(Break the array at that point because there may be multiple occurrence of same duplicate number)
+
+Time Complexity - O(N log N)
+Space Complexity - O(1) or O(n)
+( if we cannot modify the input array, then we must allocate linear space for a copy of array and sort that instead.
+
+Pros - 
+Distort the input array
+
+
+Approach 2
+Use unordered_map for hashing. 
+Count frequency of occurrence of each element and the elements with frequency more than 1 is printed. 
+unordered_map is used as range of integers is not known
+
+Time Complexity -O(N)
+Auxiliary Space - O(N)
+
+Pros -
+Auxiliary Space needs to be improved.
+
+
+Approach 3: Floyd's Tortoise and Hare (Cycle Detection)
+
+Time complexity : O(N)
+Space complexity : O(N)
+
+https://leetcode.com/problems/find-the-duplicate-number/solution/
+
+
 
