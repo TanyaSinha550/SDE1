@@ -18,4 +18,6 @@ Time complexity -O(2N)
 
 Approach 3
 Dutch National Flag algorithm
+Time Complexity - O(N)
+Space Complexity - O(1)
 
