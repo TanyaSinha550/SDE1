@@ -4,7 +4,8 @@ public class SubArray {
 
 	public static void main(String[] args) {
 
-		int[] a={1,2,3,4};
+		int[] a={1,2,3,-1};
+//		int[] a= {-2,-3,4,-1,-2,1,5,-3};
 		int maxsofar=a[0];
 		int start=0;
 		int end=0;
@@ -15,7 +16,9 @@ public class SubArray {
 			{
 				int sum=0;
 				for(int z=i;z<=j;z++)
+				{
 					sum+=a[z];
+				}
 				
 				if(maxsofar<sum)
 				{
