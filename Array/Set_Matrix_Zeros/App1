@@ -1,0 +1,65 @@
+package com.check;
+
+import java.util.Arrays;
+
+public class Matrix4 {
+
+	public static void main(String[] args) {
+
+		//this program is valid if
+		// and range of elements in matrix is greater than 0 
+		
+		int[][] matrix= {{1,1,1,1},
+				{1,0,1,1},
+				{1,1,0,0},
+				{0,0,0,1}};
+
+
+		int R=matrix.length;
+		int C=matrix[0].length;
+		int posi=0;int posj=0;
+
+		for(int i=0;i<R;i++)
+		{
+			for(int j=0;j<C;j++)
+			{
+				if(matrix[i][j]==0)
+				{
+					posi=i;
+					posj=j;
+
+					for(int x=0;x<R;x++)
+					{
+						for(int z=0;z<C;z++)
+						{
+							//we dont change the 0 to -1
+							if(matrix[posi][z]!=0)
+							matrix[posi][z]=-1;
+							
+							if(matrix[x][posj]!=0)
+							matrix[x][posj]=-1;
+						}
+					}
+
+
+				}
+			}
+		}
+
+
+		for(int i=0;i<R;i++)
+		{
+			for(int j=0;j<C;j++)
+			{
+				if(matrix[i][j]==-1)
+					matrix[i][j]=0;
+			}
+		}
+
+		for(int i=0;i<R;i++)
+			System.out.println(Arrays.toString(matrix[i]));
+
+
+	}
+
+}
