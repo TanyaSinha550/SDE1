@@ -1,0 +1,24 @@
+package com.check;
+
+public class stock1 {
+
+	public static void main(String[] args) {
+
+		int[] a= {7,6,4,3,2,1};
+
+		int maxprofit=0;
+		for(int i=0;i<a.length;i++)
+		{
+			for(int j=i+1;j<a.length;j++)
+			{
+				if(a[j]-a[i]>maxprofit)
+					maxprofit=a[j]-a[i];
+			}
+		}
+		
+		
+		System.out.println(maxprofit);
+		
+	}
+
+}
