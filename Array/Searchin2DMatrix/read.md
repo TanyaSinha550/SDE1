@@ -25,7 +25,7 @@ LeetCode
 
 App -
 Doing Binary Search as all elements are sorted 
-Time Complexity - O(log N)
+Time Complexity - O(log (n*m))
 
 
 
