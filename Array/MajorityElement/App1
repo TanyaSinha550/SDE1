@@ -1,0 +1,29 @@
+package com.array.revise;
+
+public class VotingMethod {
+
+	public static void main(String[] args) {
+
+		int[] a= {1,2,1,2,2,2,1};
+		voting(a);
+	}
+
+	public static void voting(int[] a)
+	{
+		int element=a[0];
+		int count=1;
+		for(int i=1;i<a.length;i++)
+		{
+			if(count==0)
+				element=a[i];
+			if(a[i]==element)
+				count++;
+			else
+				count--;
+		}
+		
+		System.out.println(element);
+		
+	}
+	
+}
