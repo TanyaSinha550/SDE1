@@ -1,0 +1,69 @@
+package com.check;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class SumFour {
+
+	public static void main(String[] args) {
+
+		int[] a= {1,0,-1,0,-2,2};
+		int target=0;
+		
+		Arrays.sort(a);
+		
+		ArrayList<List<Integer>> al=new ArrayList<>();
+		
+		for(int i=0;i<a.length;i++)
+		{
+			for(int j=i+1;j<a.length;j++)
+			{
+				for(int k=j+1;k<a.length;k++)
+				{
+					int low=k+1;
+					int high=a.length-1;
+					int tar=target-(a[i]+a[j]+a[k]);
+					int res=BinarySearch(a,low,high,tar);
+					if(res!=-999)
+					{
+						ArrayList<Integer> ll=new ArrayList<>();
+						ll.add(a[i]);
+						ll.add(a[j]);
+						ll.add(a[k]);
+						ll.add(a[res]);
+						al.add(ll);
+					}
+				}
+			}
+		}
+		
+		for(List<Integer> jj:al)
+		{
+			for(Integer i:jj)
+				System.out.print(i+" ");
+			System.out.println();
+		}
+		
+		
+	}
+	
+	public static int BinarySearch(int[] a, int low,int high,int tar)
+	{
+		
+		while(low<=high)
+		{
+			int mid=low+(high-low)/2;
+			if(a[mid]==tar)
+				return mid;
+			else if(tar>a[mid])
+				low=mid+1;
+			else
+				high=mid-1;
+		}
+		
+		return -999;
+	}
+	
+
+}
