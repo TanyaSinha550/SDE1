@@ -1,0 +1,30 @@
+package com.string.revise;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class LongestSubString {
+
+	public static void main(String[] args) {
+
+		String a="abcaabcdba";
+		int len=0;
+		int left=0;int right=0;
+		Set<Character> hs=new HashSet<>();
+		while(right <a.length())
+		{
+			while(hs.contains(a.charAt(right)))
+			{
+				hs.remove(a.charAt(left));
+				left++;
+			}
+			len=Math.max(right-left+1,len);
+			hs.add(a.charAt(right));
+			right++;
+		}
+		
+		System.out.println(len);
+		
+	}
+
+}
