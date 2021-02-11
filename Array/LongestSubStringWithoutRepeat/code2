@@ -1,0 +1,27 @@
+package com.string.revise;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class LongestSubstringBest {
+
+	public static void main(String[] args) {
+
+		String s="abcaabcdba";
+		int left=0;int right=0;
+		int len=0;
+		Map<Character,Integer> hp=new HashMap<>();
+		while(right<s.length())
+		{
+			if(hp.containsKey(s.charAt(right)))
+				left=Math.max(hp.get(s.charAt(right))+1,left);
+			
+			hp.put(s.charAt(right), right);
+			len=Math.max(right-left+1, len);
+			right++;
+		}
+		System.out.println(len);
+		
+	}
+
+}
