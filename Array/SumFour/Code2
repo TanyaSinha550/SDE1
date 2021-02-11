@@ -1,0 +1,67 @@
+package com.check;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class FourSumOpt {
+
+	public static void main(String[] args) {
+
+		int[] a= {1,0,-1,0,-2,2};
+		int target=0;
+		Arrays.sort(a);
+		
+		ArrayList<List<Integer>> al=new ArrayList<>();
+		
+		for(int i=0;i<a.length;i++)
+		{
+			for(int j=i+1;j<a.length;j++)
+			{
+				int target_2=target-a[j]-a[i];
+				int left=j+1;
+				int right=a.length-1;
+				
+				while(left<right)
+				{
+				if(a[left]+a[right]<target_2)
+					left++;
+				else if(a[left]+a[right] > target_2)
+					right--;
+				else
+				{
+					ArrayList<Integer> ll=new ArrayList<>();
+					ll.add(a[i]);
+					ll.add(a[j]);
+					ll.add(a[left]);
+					ll.add(a[right]);
+					al.add(ll);
+					
+				while(left<right && a[left]==ll.get(2))
+					left++;
+				
+				while(left<right && a[right]==ll.get(3))
+					right--;
+			}
+				}
+				while(j+1<a.length && a[j]==a[j+1])
+					j++;
+			}
+			
+			while(i+1<a.length && a[i]==a[i+1])
+				i++;
+			
+		}
+		
+		
+		for(List<Integer> jj:al)
+		{
+			for(Integer i:jj)
+				System.out.print(i+" ");
+			System.out.println();
+		}
+		
+		
+	}
+
+}
