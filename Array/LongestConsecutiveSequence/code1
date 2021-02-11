@@ -1,0 +1,39 @@
+package com.check;
+
+import java.util.HashSet;
+
+public class LongestSubsequence {
+
+	public static void main(String[] args) {
+
+		int[] a= {5,4,3,2,1};
+		HashSet<Integer> hs=new HashSet<>();
+		
+		for(int i:a)
+			hs.add(i);
+		
+		int maxStreak=0;
+		
+		for(int i=0;i<a.length;i++)
+		{
+			if(!hs.contains(a[i]-1))
+			{
+				int current_element=a[i];
+				int currentStreak=1;
+				
+				while(hs.contains(current_element+1))
+				{
+					current_element++;
+					currentStreak++;
+				}
+				
+				maxStreak=Math.max(maxStreak,currentStreak);
+			}
+			
+		}
+		
+		System.out.println(maxStreak);
+		
+	}
+
+}
