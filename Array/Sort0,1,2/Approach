@@ -5,7 +5,7 @@ Approach 1
 Sort the array using merge sort
 
 Time complexity - O(N log N)
-Space complexity - O(1)
+Space complexity - O(N) 
 
 Approach 2
 Linearly tranverse the array and Count the 0 , 1 and 2.
