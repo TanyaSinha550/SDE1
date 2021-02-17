@@ -1,0 +1,26 @@
+package com.learning;
+
+public class RepeatMissingMethod4 {
+
+	public static void main(String[] args) {
+
+		int[] a= {4,3,6,2,1,1};
+		
+		for(int i=0;i<a.length;i++)
+		{
+			int abs_val = Math.abs(a[i]);
+			if(a[abs_val-1]>0)
+			a[abs_val-1]=-a[abs_val-1];
+			else
+				System.out.println(abs_val);
+		}
+		
+		for(int i=0;i<a.length;i++)
+		{
+			if(a[i]>0)
+				System.out.println(i+1);
+		}
+		
+	}
+
+}
