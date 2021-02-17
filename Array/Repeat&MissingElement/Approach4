@@ -1,0 +1,26 @@
+package com.learning;
+
+public class MissingandRepeatingMethod5 {
+
+	public static void main(String[] args) {
+
+		int[] a= {2,3,4,6,1,1};
+		int n=a.length;
+		int sum=(n*(n+1))/2;
+		int square_sum=(n*(n+1)*((2*n)+1))/6;
+
+		for(int i=0;i<a.length;i++)
+		{
+			sum-=a[i];
+			square_sum-=a[i]*a[i];
+		}
+
+		int missingNumber = (sum + square_sum / 
+				sum) / 2;
+		int repeating = missingNumber - sum;
+
+		System.out.println(missingNumber);
+		System.out.println(repeating);
+	}
+
+}
