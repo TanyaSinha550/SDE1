@@ -1,0 +1,77 @@
+package com.learning;
+
+public class RepaetMissing {
+
+	public static void main(String[] args) {
+
+		int[] a= {6,5,4,4,2,1};
+		MergeSort(a,0,a.length-1);
+		
+		for(int i=0;i<a.length;i++)
+		{
+			if(a[i]!=i+1)
+			{
+				System.out.println("repeating no "+a[i]);
+				System.out.println("missing no "+ (i+1));
+			}
+		}
+
+		
+	}
+	
+	public static void MergeSort(int[] a,int low,int high)
+	{
+		
+		if(low>=high)
+			return;
+		
+		int mid=low+(high-low)/2;
+		MergeSort(a,low,mid);
+		MergeSort(a,mid+1,high);
+		Merge(a,low,mid,high);
+	}
+	
+	public static void Merge(int[] a,int low,int mid,int high)
+	{
+		int left=low;
+		int right=mid+1;
+		int k=0;
+		int[] temp=new int[high-low+1];
+		
+		while(left<=mid && right<=high)
+		{
+			if(a[left]<a[right])
+			{
+				temp[k]=a[left];
+				k++;
+				left++;
+			}
+			else
+			{
+				temp[k]=a[right];
+				k++;
+				right++;
+			}
+		}
+		
+		while(left<=mid)
+		{
+		temp[k]=a[left];
+		k++;
+		left++;
+		}
+		while(right<=high)
+		{
+			temp[k]=a[right];
+			k++;
+			right++;
+		}
+		
+		for(int i=0;i<temp.length;i++)
+			a[low+i]=temp[i];
+		
+		
+	}
+	
+
+}
