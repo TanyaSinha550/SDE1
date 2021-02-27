@@ -1,0 +1,62 @@
+package com.revise;
+
+
+public class Revise1 {
+
+	public static void main(String[] args) {
+
+		int[] a= {5,4,3,2,1};
+		nextpermutation(a);
+		
+		for(int i=0;i<a.length;i++)
+			System.out.print(a[i]+" ");
+
+	} // end of main
+
+	public static void nextpermutation(int[] a)
+	{
+		int i=a.length-2;
+		while(i>=0)
+		{
+			if(a[i]<a[i+1])
+				break;
+			i--;
+		}
+		
+		if(i>=0)
+		{
+		int j=a.length-1;
+		while(j>=0)
+		{
+			if(a[i]<a[j])
+				break;
+			j--;
+		}
+		
+		swap(a,i,j);
+		}
+		reverse(a,i+1,a.length-1);
+		
+		
+	} //  end of method
+	
+	public static void swap(int[] a,int i,int j) {
+		
+		int temp=a[i];
+		a[i]=a[j];
+		a[j]=temp;
+	}
+	
+	public static void reverse(int[] a, int i,int j)
+	{
+		while(i<j)
+		{
+			swap(a,i,j);
+			i++;j--;
+		}
+		
+		
+	}
+	
+
+}
