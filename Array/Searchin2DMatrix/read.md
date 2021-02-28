@@ -14,7 +14,7 @@ Time Complexity - O( n * log m )
 
 App2
 Use pointer as rows and columns are sorted.
-Time Complexity- O(N)
+Time Complexity- O(n+m)
 
 
 LeetCode 
