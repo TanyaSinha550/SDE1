@@ -1,0 +1,18 @@
+Approach for - Duplicates in an array when elements are not limited to a range
+
+Note: The duplicate elements can be printed in any order.
+
+Approach 1
+Use nested loop and for each element check if the element is present in the array more than once or not.
+If present store in ArrayList and check before adding.
+
+Time Complexity -O(N2)
+Auxiliary Space - O(N)
+
+Approach 2
+Use unordered_map for hashing. 
+Count frequency of occurrence of each element and the elements with frequency more than 1 is printed. 
+unordered_map is used as range of integers is not known
+
+Time Complexity -O(N)
+Auxiliary Space - O(N)
