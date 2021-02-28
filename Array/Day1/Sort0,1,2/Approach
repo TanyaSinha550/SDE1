@@ -1,0 +1,23 @@
+Sort an array of 0's , 1's and 2's
+
+
+Approach 1
+Sort the array using merge sort
+
+Time complexity - O(N log N)
+Space complexity - O(N) 
+
+Approach 2
+Linearly tranverse the array and Count the 0 , 1 and 2.
+Put them in array
+
+Pros - 
+Requires 2 passes
+Time complexity -O(2N)
+
+
+Approach 3
+Dutch National Flag algorithm
+Time Complexity - O(N)
+Space Complexity - O(1)
+
