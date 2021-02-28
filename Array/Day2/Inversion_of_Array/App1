@@ -1,0 +1,83 @@
+package com.revise;
+
+
+public class Revise1 {
+
+	public static void main(String[] args) {
+
+		int[] a= {5,4,3,2,1};
+//		int[] a={8, 4, 2, 1};
+//		int[] a= {3,1,2};
+		int inv_count=inversionArray(a,0,a.length-1);
+
+		System.out.println(inv_count);
+		for(int i=0;i<a.length;i++)
+			System.out.print(a[i]+" ");
+
+	} // end of main
+
+	public static int inversionArray(int[] a,int low,int high)
+	{
+		int inv_count=0;		
+		if(low<high)
+		{
+
+			int mid=low+(high-low)/2;
+			inv_count+=inversionArray(a,low,mid);
+			inv_count+=inversionArray(a,mid+1,high);
+			inv_count+=merge(a,low,mid,high);
+		}
+
+		return inv_count;
+	} //  end of method
+
+
+	public static int merge(int[] a,int low,int mid,int high)
+	{
+		int inv_count=0;
+		int[] temp=new int[high-low+1];
+		int k=0;
+
+		int left=low;
+		int right=mid+1;
+
+		while(left<=mid && right<=high)
+		{
+			if(a[left]<a[right])
+			{
+				temp[k]=a[left];
+				left++;
+				k++;
+			}
+
+			if(a[right]<a[left])
+			{
+				temp[k]=a[right];
+				right++;
+				k++;
+				inv_count=inv_count+(mid-left+1);
+			}
+
+		}
+
+		while(left<=mid)
+		{
+			temp[k]=a[left];
+			left++;
+			k++;
+		}
+
+		while(right<=high)
+		{
+			temp[k]=a[right];
+			right++;
+			k++;
+		}
+
+		for(int i=0;i<temp.length;i++)
+			a[i+low]=temp[i];
+
+		return inv_count;
+
+	}
+}
