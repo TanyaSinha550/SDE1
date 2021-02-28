@@ -1,0 +1,69 @@
+package com.revise;
+
+
+public class Revise1 {
+
+	public static void main(String[] args) {
+
+		int[][] matrix= {{1,1,1},{1,0,1},{1,1,1}};
+		SetMatrixZero(matrix);
+		
+		for(int i=0;i<matrix.length;i++)
+		{
+			for(int j=0;j<matrix[0].length;j++)
+				System.out.print(matrix[i][j]+" ");
+			System.out.println();
+				
+		}
+		
+
+	} // end of main
+
+	public static void SetMatrixZero(int[][] matrix)
+	{
+		
+		int m=matrix.length;
+		int n=matrix[0].length;
+		int posi,posj;
+		
+		for(int i=0;i<m;i++)
+		{
+			for(int j=0;j<n;j++)
+			{
+				if(matrix[i][j]==0)
+				{
+					posi=i;
+					posj=j;
+					
+					for(int p=0;p<n;p++)
+					{
+						if(matrix[posi][p]!=0)
+							matrix[posi][p]=-1;
+					}
+						
+					for(int q=0;q<m;q++)
+					{
+						if(matrix[q][posj]!=0)
+							matrix[q][posj]=-1;
+					}
+						
+					
+				} //end of if
+				
+			}
+		}
+		
+		for(int i=0;i<m;i++)
+		{
+			for(int j=0;j<n;j++)
+			{
+				if(matrix[i][j]==-1)
+					matrix[i][j]=0;
+			}
+		}
+		
+		
+		
+	} //  end of method
+
+}
