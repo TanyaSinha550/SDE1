@@ -1,0 +1,69 @@
+package com.learning;
+
+public class RemoveNthNode {
+	
+	static Node head;
+	
+	static class Node{
+		int data;
+		Node next;
+		Node(int data)
+		{
+			this.data=data;
+		}
+	}
+	
+	public static void printlist(Node head)
+	{
+		Node dummy=head;
+		while(dummy!=null)
+		{
+			System.out.print(dummy.data+" ");
+			dummy=dummy.next;
+		}
+		System.out.println();
+	}
+
+	public static Node reverse(Node head)
+	{
+		Node ts = new Node(0);
+		    ts.next = head;
+		Node dummy=head;
+		int cnt=0;
+		while(dummy!=null)
+		{
+			dummy=dummy.next;
+			cnt++;
+		}
+		int actual=cnt-2;
+		Node dt=head;
+		int at=1;
+		while(at!=actual && dt!=null)
+		{
+			dt=dt.next;
+			at++;
+		}
+		
+		dt.next=dt.next.next;
+		return ts.next;
+		
+	}
+	
+	public static void main(String[] args) {
+
+		
+		Node head=new Node(1);
+		head.next=new Node(2);
+		head.next.next=new Node(3);
+		head.next.next.next=new Node(4);
+		head.next.next.next.next=new Node(5);
+		
+		printlist(head);
+		Node st=reverse(head);
+		printlist(st);
+		
+	}
+
+}
+
+
