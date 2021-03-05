@@ -1,0 +1,49 @@
+package com.learning;
+
+public class IntersectionY {
+
+	Node head;
+	public static void main(String[] args) {
+
+		IntersectionY ll=new IntersectionY();
+		ll.head=new Node(5);
+		ll.head.next=new Node(6);
+		ll.head.next.next=new Node(1);
+		ll.head.next.next.next=new Node(8);
+		ll.head.next.next.next.next=new Node(4);
+		ll.head.next.next.next.next.next=new Node(5);
+		
+		
+		IntersectionY yt=new IntersectionY();
+		yt.head=new Node(4);
+		yt.head.next=new Node(1);
+		yt.head.next.next=ll.head.next.next.next;
+		
+		System.out.println(Intersect(ll.head,yt.head));
+		
+	}
+
+	public static int Intersect(Node heada,Node headb)
+	{
+		Node dummya=heada;
+		
+		while(dummya!=null )
+		{
+			Node dummyb=headb;
+			while( dummyb!=null)
+			{
+			if(dummya==dummyb)
+				return dummyb.data;
+			dummyb=dummyb.next;
+			}
+			
+			dummya=dummya.next;
+			
+		}
+		return -1;
+		
+	}
+	
+}
+
+
