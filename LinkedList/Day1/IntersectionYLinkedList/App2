@@ -1,0 +1,51 @@
+package com.learning;
+
+import java.util.HashSet;
+
+public class IntersectionY {
+
+	Node head;
+	public static void main(String[] args) {
+
+		IntersectionY ll=new IntersectionY();
+		ll.head=new Node(5);
+		ll.head.next=new Node(6);
+		ll.head.next.next=new Node(1);
+		ll.head.next.next.next=new Node(8);
+		ll.head.next.next.next.next=new Node(4);
+		ll.head.next.next.next.next.next=new Node(5);
+		
+		
+		IntersectionY yt=new IntersectionY();
+		yt.head=new Node(4);
+		yt.head.next=new Node(1);
+		yt.head.next.next=ll.head.next.next.next;
+		
+		System.out.println(Intersect(ll.head,yt.head).data);
+		
+	}
+
+	public static Node Intersect(Node heada,Node headb)
+	{
+		HashSet<Node> hs=new HashSet<>();
+		Node dummy=heada;
+		while(dummy !=null)
+		{
+			hs.add(dummy);
+			dummy=dummy.next;
+		}
+		
+		Node ty=headb;
+		while(ty!=null)
+		{
+			if(hs.contains(ty))
+				return ty;
+			ty=ty.next;
+		}
+		
+		return null;
+	}//end of method
+	
+}//end of class
+
+
