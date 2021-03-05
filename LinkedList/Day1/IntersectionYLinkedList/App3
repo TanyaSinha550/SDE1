@@ -1,0 +1,82 @@
+package com.learning;
+
+import java.util.HashSet;
+
+public class IntersectionY {
+
+	Node head;
+	public static void main(String[] args) {
+
+		IntersectionY ll=new IntersectionY();
+		ll.head=new Node(5);
+		ll.head.next=new Node(6);
+		ll.head.next.next=new Node(1);
+		ll.head.next.next.next=new Node(8);
+		ll.head.next.next.next.next=new Node(4);
+		ll.head.next.next.next.next.next=new Node(5);
+		
+		
+		IntersectionY yt=new IntersectionY();
+		yt.head=new Node(4);
+		yt.head.next=new Node(1);
+		yt.head.next.next=ll.head.next.next.next;
+		
+		System.out.println(Intersect(ll.head,yt.head).data);
+		
+	}
+	
+	public static int count(Node heada)
+	{
+		Node dummy=heada;
+		int cnt=0;
+		while(dummy!=null)
+		{
+			cnt++;
+			dummy=dummy.next;
+		}
+		return cnt;
+	}
+
+	public static Node Inter(int d,Node heada,Node headb)
+	{
+		
+		Node dummya=heada;
+		Node dummyb=headb;
+		for(int i=0;i<d;i++)
+		{
+			dummya=dummya.next;
+		}
+		
+		while(dummya!=null && dummyb!=null)
+		{
+			if(dummya==dummyb)
+				return dummya;
+			dummya=dummya.next;
+			dummyb=dummyb.next;
+		}
+		
+		return null;		
+	}
+	
+	
+	public static Node Intersect(Node heada,Node headb)
+	{
+		int l1=count(heada);
+		int l2=count(headb);
+		int d=0;
+		if(l1>l2)
+		{
+			d=l1-l2;
+			return(Inter(d,heada,headb));
+		}
+		else
+		{
+			d=l2-l1;
+			return(Inter(d,headb,heada));
+		}
+		
+	}//end of method
+	
+}//end of class
+
+
