@@ -1,0 +1,64 @@
+package com.learning;
+
+import com.learning.RemoveNthNode.Node;
+
+public class CycleDetection {
+
+	Node head;
+	public static void main(String[] args) {
+
+		CycleDetection ty=new CycleDetection();
+		ty.head=new Node(3);
+		ty.head.next=new Node(2);
+		ty.head.next.next=new Node(0);
+		ty.head.next.next.next=new Node(-4);
+		Node tt=reverse(ty.head,3);
+		System.out.println(tt.data);
+		printlist(tt);
+	}
+	
+	public static void printlist(Node head)
+	{
+		Node dummy=head;
+		while(dummy!=null)
+		{
+			System.out.print(dummy.data+" ");
+			dummy=dummy.next;
+		}
+		System.out.println();
+	}
+	
+	public static Node reverse(Node head,int k)
+	{
+	Node dummy=new Node(0);
+	dummy.next=head;
+	
+	Node curr=dummy,nex=dummy,pre=dummy;
+	int count=0;
+	while(curr.next != null)
+	{
+		curr=curr.next;
+		count++;
+	}
+	
+	while(count>=k)
+	{
+		curr=pre.next;
+		nex=curr.next;
+		for(int i=1;i<k;i++)
+		{
+			curr.next=nex.next;
+			nex.next=pre.next;
+			pre.next=nex;
+			nex=curr.next;
+		}
+		pre=curr;
+		count=count-k;
+	}
+	
+	return dummy.next;
+	
+	
+} //end of method
+
+} //end of class
