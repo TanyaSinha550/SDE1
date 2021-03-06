@@ -1,0 +1,61 @@
+package com.learning;
+
+import com.learning.RemoveNthNode.Node;
+
+public class PalindromicLinkedList {
+
+	Node head;
+	public static void main(String[] args) {
+
+		PalindromicLinkedList ll=new PalindromicLinkedList();
+		ll.head=new Node(1);
+		ll.head.next=new Node(2);
+		ll.head.next.next=new Node(3);
+		ll.head.next.next.next=new Node(2);
+		ll.head.next.next.next.next=new Node(2);
+		
+		System.out.println(Palindrome(ll.head));
+	}
+
+	public static boolean Palindrome(Node head)
+	{
+		Node fast=head;
+		Node slow=head;
+		
+		while(fast.next!=null && fast.next.next !=null)
+		{
+			fast=fast.next.next;
+			slow=slow.next;
+		}
+		
+		slow.next=Reverse(slow.next);
+		
+		slow=slow.next;
+		
+		while(slow!=null)
+		{
+			if(slow.data !=head.data)
+				return false;
+			slow=slow.next;
+			head=head.next;
+		}
+		return true;
+		
+		
+	}
+	
+	public static Node Reverse(Node head)
+	{
+		Node newhead=null;
+		while(head!=null)
+		{
+			Node nex=head.next;
+			head.next=newhead;
+			newhead=head;
+			head=nex;
+		}
+		
+		return newhead;
+	}
+	
+}
