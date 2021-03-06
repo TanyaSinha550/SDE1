@@ -1,0 +1,37 @@
+package com.learning;
+
+import java.util.HashSet;
+
+public class CycleDetection {
+
+	Node head;
+	public static void main(String[] args) {
+
+		CycleDetection ty=new CycleDetection();
+		ty.head=new Node(3);
+		ty.head.next=new Node(2);
+		ty.head.next.next=new Node(0);
+		ty.head.next.next.next=new Node(-4);
+		ty.head.next.next.next.next=ty.head.next;
+		
+		System.out.println(DetectCycle(ty.head));
+
+
+	}
+	
+	public static boolean DetectCycle(Node head)
+	{
+		Node fast=head;
+		Node slow=head;
+		while(fast.next!=null && fast.next.next!=null)
+		{
+			fast=fast.next.next;
+			slow=slow.next;
+			if(slow==fast)
+				return true;
+		}
+		return false;
+		
+	}
+
+}
