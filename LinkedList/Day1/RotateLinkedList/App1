@@ -1,0 +1,64 @@
+package com.learning;
+
+import com.learning.RemoveNthNode.Node;
+
+public class RotateLinkedList {
+
+	Node head;
+	public static void main(String[] args) {
+
+		RotateLinkedList ll=new RotateLinkedList();
+		ll.head=new Node(1);
+		ll.head.next=new Node(2);
+		ll.head.next.next=new Node(3);
+		ll.head.next.next.next=new Node(4);
+		ll.head.next.next.next.next=new Node(5);
+		
+		Node ty=Rotate(ll.head,2);
+		printlist(ty);
+		
+	}
+
+	public static void printlist(Node head)
+	{
+		Node dummy=head;
+		while(dummy!=null)
+		{
+			System.out.print(dummy.data+" ");
+			dummy=dummy.next;
+		}
+		System.out.println();
+	}
+	
+	
+	
+	public static Node Rotate(Node head,int k)
+	{
+		Node curr=head;
+		int len=1;
+		while(curr.next!=null)
+		{
+			len++;
+			curr=curr.next;
+		}
+		k=k%len;
+		k=len-k;
+		
+		curr.next=head;
+		
+		while(k>0)
+		{
+			k--;
+			curr=curr.next;
+			
+		}
+		
+		head=curr.next;
+		curr.next=null;
+		
+		return head;
+		
+		
+	}
+	
+}
