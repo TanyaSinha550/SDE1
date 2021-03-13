@@ -1,0 +1,31 @@
+package com.learning;
+
+import java.util.ArrayList;
+
+public class MinimumCoins {
+
+	public static void main(String[] args) {
+
+		int[] deno= {1,2,5,10,20,50,100,500,1000};
+		
+		int V=11;
+		int count=0;
+		ArrayList<Integer> ar=new ArrayList<>();
+		
+		for(int i=deno.length-1;i>=0;i--)
+		{
+			while(V>=deno[i])
+			{
+				V-=deno[i];
+				count++;
+				ar.add(deno[i]);
+			}
+		}
+		for(int i=0;i<ar.size();i++)
+			System.out.print(ar.get(i)+" ");
+		System.out.println();
+		
+		System.out.println(count);
+	}
+
+}
