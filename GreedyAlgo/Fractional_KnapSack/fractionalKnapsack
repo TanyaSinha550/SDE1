@@ -1,0 +1,59 @@
+package com.learning;
+
+import java.util.Arrays;
+
+public class fractionalKnapsack {
+
+	public static void main(String[] args) {
+
+		int N = 3; int W = 50;
+		int values[] = {60,120,100};
+		int weight[] = {10,30,20};
+		Item[] arr=new Item[N];
+		for(int i=0;i<N;i++)
+		{
+			arr[i]=new Item(values[i],weight[i]);
+		}
+		System.out.println(knapsack(50,arr,N));
+
+	}
+
+	static double knapsack(int W ,Item[] arr,int n)
+	{
+		meetingComparator mt=new meetingComparator();
+		Arrays.sort(arr,mt);
+		
+		double max_value=0; 
+
+		for(int i=0;i<n;i++)
+		{
+			if(arr[i].weight<= W)
+			{
+				max_value+=arr[i].value;
+				W=W-arr[i].weight;
+			}
+			else
+			{
+				double vpw=(double)arr[i].value/(double)arr[i].weight;
+				max_value+=(vpw*W);
+				break;
+			}
+			
+		}
+
+		return max_value;
+	}
+
+
+}
+
+class Item
+{
+	int value;int weight;
+	Item(int value,int weight)
+	{
+		this.value=value;
+		this.weight=weight;
+	}
+	
+}
