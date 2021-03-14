@@ -1,0 +1,30 @@
+package com.learning;
+
+public class PowerSetCode {
+
+	public static void main(String[] args) {
+
+		int[] a= {1,2,3,4};
+		PowerSet(a,a.length);
+		
+	}
+	
+	public static void PowerSet(int[] a ,int n)
+	{
+		long powerset_size=(long) Math.pow(2, n);
+		
+		for(int i=0;i<powerset_size;i++)
+		{
+			for(int j=0;j<n;j++)
+			{
+				if( (i & (1<<j)) >0)
+					System.out.print(a[j]);
+			}
+			System.out.println();
+		}
+		
+		
+		
+	}
+
+}
